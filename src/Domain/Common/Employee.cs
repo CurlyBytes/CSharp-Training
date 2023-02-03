@@ -4,58 +4,63 @@ using System.Text;
 
 namespace Domain.Common
 {
-    abstract class Employee
+    public abstract class Employee
     {
         private int employeeId;
-        private string name;
+        private String name;
         private double salary;
-        private double deduction;
 
         public Employee()
         {
         }
 
-        public Employee(int employeeId, string name)
+        public Employee(int employeeId, String name)
         {
             this.employeeId = employeeId;
             this.name = name;
         }
 
-        public int EmployeeId
+        public int GetEmployeeId()
         {
-            get { return employeeId; }
-            set { employeeId = value; }
+            return employeeId;
         }
 
-        public string Name
+        public void SetEmployeeId(int employeeId)
         {
-            get { return name; }
-            set { name = value; }
+            this.employeeId = employeeId;
         }
 
-        public double Salary
+        public String GetName()
         {
-            get { return salary; }
-            set { salary = value; }
+            return name;
         }
 
-        public double Deduction
+        public void SetName(String name)
         {
-            get { return deduction; }
-            set { deduction = value; }
+            this.name = name;
         }
 
-        public void Display()
+        public double GetSalary()
         {
-            Console.WriteLine("Employee ID: " + employeeId);
-            Console.WriteLine("Name: " + name);
-            Console.WriteLine("Salary: " + salary);
+            return salary;
         }
-        public abstract double CalculateSalary(double daysWorked);
+
+        public void SetSalary(double salary)
+        {
+            this.salary = salary;
+        }
 
         public abstract double CalculateDeduction();
 
         public abstract double CalculateNetPay();
 
+        public abstract double CalculateSalary(double numberOfDaysWorked);
+
+        public void Display()
+        {
+            Console.WriteLine("Employee Id: " + employeeId);
+            Console.WriteLine("Name: " + name);
+            Console.WriteLine("Salary: " + salary);
+        }
     }
 }
