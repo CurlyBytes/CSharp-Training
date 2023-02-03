@@ -26,12 +26,6 @@ namespace Domain
             set { specialization = value; }
         }
 
-        public new void Display()
-        {
-            base.Display();
-            Console.WriteLine("Specialization " + Specialization);
-        }
-
         public override double CalculateSalary(double numberOfDays)
         {
             base.SetSalary(programmersDailyRate * numberOfDays);
@@ -52,6 +46,14 @@ namespace Domain
         public override double CalculateNetPay()
         {
             return base.GetSalary() - CalculateDeduction();
+        }
+
+        public new void Display()
+        {
+            base.Display();
+            Console.WriteLine("Specialization " + Specialization);
+            Console.WriteLine("Deduction " + CalculateDeduction());
+            Console.WriteLine("Net Pay " + CalculateNetPay());
         }
 
     }

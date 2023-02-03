@@ -59,7 +59,7 @@ namespace Domain.Common
         public void Display()
         {
             Console.WriteLine("Employee Id: " + employeeId);
-            Console.WriteLine("Name: " + name);
+            Console.WriteLine("Employee Name: " + name);
             Console.WriteLine("Salary: " + salary);
         }
     }

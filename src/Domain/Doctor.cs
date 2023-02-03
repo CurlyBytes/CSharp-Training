@@ -18,6 +18,26 @@ namespace Domain
 
         public string Specialization { get => specialization; set => specialization = value; }
 
+        public override double CalculateSalary(double numberOfDaysWorked)
+        {
+            double rate = 0;
+            switch (Specialization)
+            {
+                case "Pediatrician":
+                    rate = 2050;
+                    break;
+                case "Ob-Gynecologist":
+                    rate = 2650;
+                    break;
+                case "Neurologist":
+                    rate = 6575;
+                    break;
+            }
+
+            base.SetSalary(rate * numberOfDaysWorked);
+            return base.GetSalary();
+        }
+
         public override double CalculateDeduction()
         {
             double salary = base.GetSalary();
@@ -65,31 +85,12 @@ namespace Domain
             return base.GetSalary() - CalculateDeduction();
         }
 
-        public override double CalculateSalary(double numberOfDaysWorked)
-        {
-            double rate = 0;
-            switch (Specialization)
-            {
-                case "Pediatrician":
-                    rate = 2050;
-                    break;
-                case "Ob-Gynecologist":
-                    rate = 2650;
-                    break;
-                case "Neurologist":
-                    rate = 6575;
-                    break;
-            }
-
-      
-            base.SetSalary(rate * numberOfDaysWorked);
-            return base.GetSalary();
-        }
-
         public new void Display()
         {
             base.Display();
-            Console.WriteLine("Specialization " + Specialization);
+            Console.WriteLine("Specialization: " + Specialization);
+            Console.WriteLine("Deduction: " + CalculateDeduction());
+            Console.WriteLine("Net Pay: " + CalculateNetPay());
         }
     }
 }
